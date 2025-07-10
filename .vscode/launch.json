@@ -1,0 +1,22 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Executar OpenGL",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/programa",
+      "cwd": "${workspaceFolder}",
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "preLaunchTask": "Compilar com Make",
+      "setupCommands": [
+        {
+          "description": "Habilitar impressão de tipo",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ]
+    }
+  ]
+}
