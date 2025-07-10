@@ -12,7 +12,7 @@ int cam_view = 0;
 
 void render_floor()
 {
-   
+
   glBegin(GL_LINES);
   for (GLfloat i = -100; i <= 100; i += 10)
   {
@@ -26,8 +26,6 @@ void render_floor()
 
 void display(void)
 {
-
-  
   glColor3f(1.0f, 1.0f, 1.0f);
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -35,19 +33,30 @@ void display(void)
   render_floor();
 
   glPushMatrix();
-
+  glTranslatef(pos_carro, 0, 0);
   glPushMatrix();
   glColor3f(1.0f, 0.0f, 0.0f); // colorindo a base do carro
   glScalef(40, 1, 20);         // aplicando uma escala no cubo para aumentar seu tamando nos eixos
   glutSolidCube(1);            // criando o cubo
   glPopMatrix();
 
-  glColor3f(0.3f, 0.3f, 0.3f); // colorindo as rodas
-
+  glColor3f(0.3f, 0.3f, 0.3f);      // colorindo as rodas
   glTranslatef(20.0f, 0.0f, 10.0f); // realizando a translação para posicionar a roda na frente do veiculo
-  glutSolidTorus(1.0, 3, 15, 30);   //  criando a roda do veiculo
+  glPushMatrix();
+  {
+    glRotatef(rot_rodas, 0, 1, 0);
+    glutSolidTorus(1.0, 3, 15, 30); //  criando a roda do veiculo
+  }
+  glPopMatrix();
+
   glTranslatef(0.0f, 0.0f, -20.0f); // realizando a translação para posicionar a outra roda na frente do veiculo
-  glutSolidTorus(1.0, 3, 15, 30);   // criando a  segunda roda do veiculo
+  glPushMatrix();
+  {
+    glRotatef(rot_rodas, 0, 1, 0);
+    glutSolidTorus(1.0, 3, 15, 30); // criando a  segunda roda do veiculo
+  }
+  glPopMatrix();
+
   glTranslatef(-40.0f, 0.0f, 0.0f);
   glutSolidTorus(1.0, 3, 15, 30); // criando a  segunda roda do veiculo
   glTranslatef(0.0f, 0.0f, 20.0f);
