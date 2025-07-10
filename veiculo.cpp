@@ -12,6 +12,7 @@ int cam_view = 0;
 
 void render_floor()
 {
+   
   glBegin(GL_LINES);
   for (GLfloat i = -100; i <= 100; i += 10)
   {
