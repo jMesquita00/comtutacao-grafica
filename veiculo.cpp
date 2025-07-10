@@ -37,6 +37,7 @@ void display(void) {
   glutSolidCube(1); // criando o cubo
   glPopMatrix();
 
+  
   glColor3f(0.3f,0.3f,0.3f); // colorindo as rodas
 
   glTranslatef(20.0f ,0.0f ,10.0f); // realizando a translação
